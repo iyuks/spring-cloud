@@ -1,0 +1,28 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/sxc1010/spring-cloud-config.git    #配置远程仓库
+  #配置rabbitmq信息,如果都与默认值一致则不需要配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:9093/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #暴漏出发消息总线的地址
+        include: bus-refresh
